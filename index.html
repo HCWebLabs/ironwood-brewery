@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ironwood Brewing Co. - Award-winning craft beers and farm-to-table cuisine in the heart of downtown.">
+  <title>Ironwood Brewing Co. - Craft Beer & Kitchen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-copper: oklch(0.55 0.12 45);
+      --color-amber: oklch(0.68 0.15 75);
+      --color-wood: oklch(0.35 0.04 50);
+      --color-dark: oklch(0.18 0.02 60);
+      --color-cream: oklch(0.96 0.01 85);
+      --color-white: oklch(0.99 0 0);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-heading: 'Oswald', sans-serif;
+      --font-body: 'Roboto', sans-serif;
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @supports (height: 100svh) {
+      :root {
+        --vh: 100svh;
+      }
+    }
+
+    @supports not (height: 100svh) {
+      :root {
+        --vh: 100vh;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-dark);
+      background: var(--color-cream);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* HEADER & NAV - Mobile First */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: var(--color-white);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s var(--ease-smooth);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.875rem 1rem;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-copper);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: none;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--color-dark);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9375rem;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--color-copper);
+    }
+
+    .nav-links a:focus-visible {
+      outline: 2px solid var(--color-copper);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-width: 44px;
+      min-height: 44px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .menu-toggle:focus-visible {
+      outline: 2px solid var(--color-copper);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--color-dark);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* 390px+ */
+    @media (min-width: 390px) {
+      nav {
+        padding: 1rem 1.25rem;
+      }
+
+      .logo {
+        font-size: 1.375rem;
+      }
+    }
+
+    /* 500px+ */
+    @media (min-width: 500px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* 768px+ Tablet */
+    @media (min-width: 768px) {
+      nav {
+        padding: 1.25rem 2rem;
+      }
+
+      .logo {
+        font-size: 1.625rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+    }
+
+    /* 1024px+ Desktop */
+    @media (min-width: 1024px) {
+      .logo {
+        font-size: 1.75rem;
+      }
+
+      .nav-links {
+        gap: 2.5rem;
+      }
+    }
+
+    /* HERO - Mobile First */
+    .hero {
+      position: relative;
+      height: var(--vh);
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      width: 100%;
+      max-width: 100vw;
+      background-color: var(--color-dark);
+      background-image: 
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.65)),
+        url('https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=1920&h=1080&fit=crop&q=85');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .hero-video {
+      display: none;
+    }
+
+    .hero-overlay {
+      display: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--color-white);
+      padding: 1.5rem 1rem;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 0.95;
+      margin-bottom: 1rem;
+      letter-spacing: 0.08em;
+      animation: fadeInUp 1s var(--ease-smooth);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 0.9375rem;
+      font-weight: 400;
+      margin-bottom: 1.75rem;
+      animation: fadeInUp 1s 0.2s var(--ease-smooth) backwards;
+      line-height: 1.4;
+      letter-spacing: 0.03em;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      background: var(--color-copper);
+      color: var(--color-white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      border-radius: 4px;
+      transition: all 0.3s var(--ease-smooth);
+      border: 2px solid var(--color-copper);
+      min-width: 44px;
+      min-height: 44px;
+      animation: fadeInUp 1s 0.4s var(--ease-smooth) backwards;
+    }
+
+    .cta-button:hover {
+      background: transparent;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    .cta-button:focus-visible {
+      outline: 3px solid var(--color-amber);
+      outline-offset: 4px;
+    }
+
+    /* 390px+ */
+    @media (min-width: 390px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+    }
+
+    /* 500px+ */
+    @media (min-width: 500px) {
+      .hero {
+        min-height: 550px;
+      }
+
+      .hero-content {
+        padding: 2rem 1.5rem;
+      }
+
+      .hero-title {
+        font-size: 3.25rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.125rem;
+        margin-bottom: 2rem;
+      }
+
+      .cta-button {
+        padding: 1rem 2.25rem;
+        font-size: 1rem;
+      }
+    }
+
+    /* 768px+ */
+    @media (min-width: 768px) {
+      .hero {
+        min-height: 600px;
+      }
+
+      .hero-content {
+        padding: 2.5rem 2rem;
+      }
+
+      .hero-title {
+        font-size: 4.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.25rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .cta-button {
+        padding: 1rem 2.5rem;
+        font-size: 1.0625rem;
+      }
+    }
+
+    /* 1024px+ */
+    @media (min-width: 1024px) {
+      .hero {
+        min-height: 700px;
+      }
+
+      .hero-title {
+        font-size: 5.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.375rem;
+      }
+    }
+
+    /* 1280px+ */
+    @media (min-width: 1280px) {
+      .hero {
+        min-height: 750px;
+      }
+
+      .hero-title {
+        font-size: 6.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* 1440px+ */
+    @media (min-width: 1440px) {
+      .hero {
+        min-height: 800px;
+      }
+
+      .hero-title {
+        font-size: 7rem;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* SECTIONS - Mobile First */
+    section {
+      padding: 2.5rem 1rem;
+      width: 100%;
+    }
+
+    .section-content {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--color-copper);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--color-wood);
+      margin-bottom: 2rem;
+      max-width: 700px;
+      line-height: 1.5;
+    }
+
+    /* 390px+ */
+    @media (min-width: 390px) {
+      section {
+        padding: 3rem 1.25rem;
+      }
+
+      .section-title {
+        font-size: 2.25rem;
+        margin-bottom: 0.875rem;
+      }
+
+      .section-subtitle {
+        font-size: 1.0625rem;
+        margin-bottom: 2.25rem;
+      }
+    }
+
+    /* 500px+ */
+    @media (min-width: 500px) {
+      section {
+        padding: 3.5rem 1.5rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .section-subtitle {
+        font-size: 1.125rem;
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    /* 768px+ */
+    @media (min-width: 768px) {
+      section {
+        padding: 4rem 2rem;
+      }
+
+      .section-title {
+        font-size: 3rem;
+      }
+
+      .section-subtitle {
+        font-size: 1.1875rem;
+        margin-bottom: 3rem;
+      }
+    }
+
+    /* 1024px+ */
+    @media (min-width: 1024px) {
+      section {
+        padding: 5rem 2.5rem;
+      }
+
+      .section-title {
+        font-size: 3.25rem;
+      }
+
+      .section-subtitle {
+        font-size: 1.25rem;
+      }
+    }
+
+    /* 1280px+ */
+    @media (min-width: 1280px) {
+      section {
+        padding: 6rem 3rem;
+      }
+
+      .section-title {
+        font-size: 3.5rem;
+      }
+    }
+
+    /* ABOUT - Mobile First */
+    .about {
+      background: var(--color-white);
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+
+    /* 390px+ */
+    @media (min-width: 390px) {
+      .about-grid {
+        gap: 2rem;
+      }
+
+      .about-text p {
+        font-size: 1rem;
+        margin-bottom: 1.125rem;
+      }
+    }
+
+    /* 500px+ */
+    @media (min-width: 500px) {
+      .about-text p {
+        font-size: 1.0625rem;
+        margin-bottom: 1.25rem;
+      }
+    }
+
+    /* 768px+ */
+    @media (min-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+
+      .about-image {
+        box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      }
+    }
+
+    /* 1024px+ */
+    @media (min-width: 1024px) {
+      .about-grid {
+        gap: 4rem;
+      }
+    }
+
+    /* 1280px+ */
+    @media (min-width: 1280px) {
+      .about-grid {
+        gap: 5rem;
+      }
+    }
+
+    /* BEERS - Mobile First */
+    .beers {
+      background: var(--color-cream);
+    }
+
+    .beer-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr;
+    }
+
+    .beer-card {
+      background: var(--color-white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s;
+    }
+
+    .beer-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+
+    .beer-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .beer-info {
+      padding: 1.25rem;
+    }
+
+    .beer-name {
+      font-family: var(--font-heading);
+      font-size: 1.375rem;
+      font-weight: 600;
+      color: var(--color-copper);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .beer-style {
+      font-size: 0.875rem;
+      color: var(--color-wood);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    .beer-description {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--color-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .beer-stats {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.8125rem;
+      color: var(--color-wood);
+      font-weight: 500;
+    }
+
+    /* 390px+ */
+    @media (min-width: 390px) {
+      .beer-grid {
+        gap: 1.75rem;
+      }
+
+      .beer-image {
+        height: 220px;
+      }
+
+      .beer-info {
+        padding: 1.375rem;
+      }
+
+      .beer-name {
+        font-size: 1.4375rem;
+      }
+
+      .beer-description {
+        font-size: 0.9375rem;
+      }
+
+      .beer-stats {
+        font-size: 0.875rem;
+        gap: 1.5rem;
+      }
+    }
+
+    /* 500px+ */
+    @media (min-width: 500px) {
+      .beer-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .beer-image {
+        height: 240px;
+      }
+
+      .beer-info {
+        padding: 1.5rem;
+      }
+
+      .beer-name {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* 768px+ */
+    @media (min-width: 768px) {
+      .beer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* 1024px+ */
+    @media (min-width: 1024px) {
+      .beer-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+      }
+
+      .beer-image {
+        height: 260px;
+      }
+    }
+
+    /* MENU - Mobile First */
+    .menu {
+      background: var(--color-white);
+    }
+
+    .menu-categories {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .menu-category {
+      background: var(--color-cream);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .menu-category h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--color-copper);
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid var(--color-amber);
+      padding-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+
+    .menu-items {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .menu-item {
+      background: var(--color-white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .menu-item-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .menu-item-content {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .menu-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+      gap: 1rem;
+    }
+
+    .menu-item-info {
+      flex: 1;
+    }
+
+    .menu-item-info h4 {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .menu-item-description {
+      font-size: 0.9375rem;
+      color: var(--color-wood);
+      line-height: 1.6;
+    }
+
+    .menu-item-price {
+      font-family: var(--font-display);
+      font-weight: 400;
+      color: var(--color-copper);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      letter-spacing: 0.05em;
+    }
+
+    /* 390px+ */
+    @media (min-width: 390px) {
+      .menu-category {
+        padding: 1.75rem;
+      }
+
+      .menu-category h3 {
+        font-size: 1.625rem;
+        margin-bottom: 1.75rem;
+      }
+
+      .menu-item-image {
+        height: 220px;
+      }
+
+      .menu-item-content {
+        padding: 1.5rem;
+      }
+
+      .menu-item-info h4 {
+        font-size: 1.1875rem;
+      }
+
+      .menu-item-description {
+        font-size: 1rem;
+      }
+
+      .menu-item-price {
+        font-size: 1.625rem;
+      }
+    }
+
+    /* 500px+ */
+    @media (min-width: 500px) {
+      .menu-categories {
+        gap: 2.5rem;
+      }
+
+      .menu-category {
+        padding: 2rem;
+      }
+
+      .menu-category h3 {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+      }
+
+      .menu-item-image {
+        height: 240px;
+      }
+
+      .menu-item-info h4 {
+        font-size: 1.25rem;
+      }
+
+      .menu-item-price {
+        font-size: 1.75rem;
+      }
+    }
+
+    /* 768px+ */
+    @media (min-width: 768px) {
+      .menu-categories {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+
+      .menu-category h3 {
+        font-size: 1.875rem;
+      }
+
+      .menu-item-image {
+        height: 260px;
+      }
+    }
+
+    /* 1024px+ */
+    @media (min-width: 1024px) {
+      .menu-categories {
+        gap: 4rem;
+      }
+
+      .menu-category {
+        padding: 2.5rem;
+      }
+
+      .menu-category h3 {
+        font-size: 2rem;
+      }
+
+      .menu-items {
+        gap: 2rem;
+      }
+
+      .menu-item-image {
+        height: 280px;
+      }
+    }
+
+    /* VISIT - Mobile First */
+    .visit {
+      background: var(--color-dark);
+      color: var(--color-cream);
+      text-align: center;
+    }
+
+    .visit .section-title {
+      color: var(--color-amber);
+    }
+
+    .visit .section-subtitle {
+      color: var(--color-cream);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .visit-info {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    .info-block h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      color: var(--color-amber);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .info-block p {
+      font-size: 0.9375rem;
+      line-height: 1.8;
+    }
+
+    .info-block a {
+      color: var(--color-amber);
+      text-decoration: none;
+      border-bottom: 1px solid var(--color-amber);
+      transition: opacity 0.2s;
+    }
+
+    .info-block a:hover,
+    .info-block a:focus-visible {
+      opacity: 0.8;
+    }
+
+    .info-block a:focus-visible {
+      outline: 2px solid var(--color-amber);
+      outline-offset: 4px;
+    }
+
+    /* 390px+ */
+    @media (min-width: 390px) {
+      .visit-info {
+        gap: 2.25rem;
+        margin-top: 2.25rem;
+      }
+
+      .info-block h3 {
+        font-size: 1.3125rem;
+      }
+
+      .info-block p {
+        font-size: 1rem;
+      }
+    }
+
+    /* 500px+ */
+    @media (min-width: 500px) {
+      .visit-info {
+        gap: 2.5rem;
+        margin-top: 2.5rem;
+      }
+
+      .info-block h3 {
+        font-size: 1.375rem;
+        margin-bottom: 0.875rem;
+      }
+
+      .info-block p {
+        font-size: 1.0625rem;
+      }
+    }
+
+    /* 768px+ */
+    @media (min-width: 768px) {
+      .visit-info {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+
+      .info-block h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    /* 1024px+ */
+    @media (min-width: 1024px) {
+      .visit-info {
+        gap: 4rem;
+      }
+    }
+
+    /* FOOTER - Mobile First */
+    footer {
+      background: var(--color-wood);
+      color: var(--color-cream);
+      padding: 2.5rem 1rem 1.5rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--color-amber);
+      margin-bottom: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      list-style: none;
+      margin: 1.25rem 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--color-cream);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-size: 0.875rem;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--color-amber);
+    }
+
+    .footer-links a:focus-visible {
+      outline: 2px solid var(--color-amber);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    .footer-copyright {
+      margin-top: 1.5rem;
+      font-size: 0.8125rem;
+      opacity: 0.8;
+    }
+
+    .footer-credit {
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      opacity: 0.6;
+    }
+
+    /* 390px+ */
+    @media (min-width: 390px) {
+      footer {
+        padding: 2.75rem 1.25rem 1.75rem;
+      }
+
+      .footer-logo {
+        font-size: 1.625rem;
+        margin-bottom: 1rem;
+      }
+
+      .footer-links {
+        gap: 1.5rem;
+        margin: 1.375rem 0;
+      }
+
+      .footer-links a {
+        font-size: 0.9375rem;
+      }
+
+      .footer-copyright {
+        margin-top: 1.75rem;
+        font-size: 0.875rem;
+      }
+
+      .footer-credit {
+        margin-top: 0.875rem;
+        font-size: 0.8125rem;
+      }
+    }
+
+    /* 500px+ */
+    @media (min-width: 500px) {
+      footer {
+        padding: 3rem 1.5rem 2rem;
+      }
+
+      .footer-logo {
+        font-size: 1.75rem;
+      }
+
+      .footer-links {
+        gap: 1.75rem;
+        margin: 1.5rem 0;
+      }
+
+      .footer-copyright {
+        margin-top: 2rem;
+      }
+
+      .footer-credit {
+        margin-top: 1rem;
+      }
+    }
+
+    /* 768px+ */
+    @media (min-width: 768px) {
+      footer {
+        padding: 3rem 2rem 2rem;
+      }
+
+      .footer-logo {
+        font-size: 2rem;
+      }
+
+      .footer-links {
+        gap: 2rem;
+      }
+    }
+
+    /* MOBILE MENU - Mobile First */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--color-white);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(100%);
+      transition: transform 0.3s var(--ease-smooth);
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+
+    .mobile-menu ul {
+      list-style: none;
+      text-align: center;
+    }
+
+    .mobile-menu li {
+      margin: 1.25rem 0;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--color-dark);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a:focus-visible {
+      color: var(--color-copper);
+    }
+
+    .mobile-menu a:focus-visible {
+      outline: 2px solid var(--color-copper);
+      outline-offset: 4px;
+    }
+
+    /* 390px+ */
+    @media (min-width: 390px) {
+      .mobile-menu li {
+        margin: 1.5rem 0;
+      }
+
+      .mobile-menu a {
+        font-size: 2rem;
+      }
+    }
+
+    /* 500px+ */
+    @media (min-width: 500px) {
+      .mobile-menu a {
+        font-size: 2.25rem;
+      }
+    }
+
+    /* 768px+ */
+    @media (min-width: 768px) {
+      .mobile-menu {
+        display: none;
+      }
+    }
+
+    /* SCROLL TO TOP BUTTON - Mobile First */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      width: 48px;
+      height: 48px;
+      background: var(--color-copper);
+      color: var(--color-white);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s var(--ease-smooth);
+      z-index: 900;
+    }
+
+    .scroll-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-to-top:hover {
+      background: var(--color-amber);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top:focus-visible {
+      outline: 3px solid var(--color-amber);
+      outline-offset: 4px;
+    }
+
+    .scroll-to-top svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .scroll-to-top i {
+      font-size: 20px;
+    }
+
+    /* 390px+ */
+    @media (min-width: 390px) {
+      .scroll-to-top {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 50px;
+        height: 50px;
+      }
+
+      .scroll-to-top svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .scroll-to-top i {
+        font-size: 22px;
+      }
+    }
+
+    /* 500px+ */
+    @media (min-width: 500px) {
+      .scroll-to-top {
+        width: 52px;
+        height: 52px;
+      }
+    }
+
+    /* 768px+ */
+    @media (min-width: 768px) {
+      .scroll-to-top {
+        bottom: 1.75rem;
+        right: 1.75rem;
+        width: 54px;
+        height: 54px;
+      }
+
+      .scroll-to-top svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .scroll-to-top i {
+        font-size: 24px;
+      }
+    }
+
+    /* 1024px+ */
+    @media (min-width: 1024px) {
+      .scroll-to-top {
+        bottom: 2rem;
+        right: 2rem;
+        width: 56px;
+        height: 56px;
+      }
+    }
+
+    /* SCROLL REVEAL - Mobile First */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 500px+ */
+    @media (min-width: 500px) {
+      .reveal {
+        transform: translateY(40px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="sr-only">Skip to main content</a>
+
+  <header role="banner">
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="./index.html" class="logo" aria-label="Ironwood Brewing Co. Home">Ironwood</a>
+      <ul class="nav-links">
+        <li><a href="./about.html">Our Story</a></li>
+        <li><a href="./beers.html">Beers</a></li>
+        <li><a href="./kitchen.html">Menu</a></li>
+        <li><a href="./visit.html">Visit Us</a></li>
+      </ul>
+      <button class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+    <ul>
+      <li><a href="./about.html">Our Story</a></li>
+        <li><a href="./beers.html">Beers</a></li>
+        <li><a href="./kitchen.html">Menu</a></li>
+        <li><a href="./visit.html">Visit Us</a></li>
+    </ul>
+  </div>
+
+  <main id="main">
+    <section class="hero" aria-label="Welcome">
+      <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-person-pouring-beer-in-a-glass-23310-large.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">Craft Beer. Exceptional Food.</h1>
+        <p class="hero-subtitle">Award-winning brews & farm-to-table cuisine in the heart of downtown</p>
+        <a href="#visit" class="cta-button">Plan Your Visit</a>
+      </div>
+    </section>
+
+    <section id="about" class="about reveal">
+      <div class="section-content">
+        <h2 class="section-title">Our Story</h2>
+        <p class="section-subtitle">Brewing excellence since 2015</p>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>Founded by brewmaster Jake Morrison and chef Sarah Chen, Ironwood Brewing Co. was born from a shared passion for creating exceptional experiences through beer and food.</p>
+            <p>We brew small-batch, innovative beers using locally sourced ingredients and time-honored techniques. Our kitchen complements every pint with seasonally inspired dishes that showcase regional farmers and producers.</p>
+            <p>From our flagship Copper IPA to experimental barrel-aged stouts, every beer tells a story. Join us at the bar, gather around our communal tables, and become part of the Ironwood family.</p>
+          </div>
+          <img src="https://images.unsplash.com/photo-1615332692419-503a9d1c390f?w=800&h=600&fit=crop" alt="Copper brewing kettles in our brewhouse" class="about-image" width="800" height="600" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <section id="beers" class="beers reveal">
+      <div class="section-content">
+        <h2 class="section-title">Signature Beers</h2>
+        <p class="section-subtitle">Fresh brews on tap daily</p>
+        <div class="beer-grid">
+        <article class="beer-card">
+          <img src="https://images.unsplash.com/photo-1618885472179-5e474019f2a9?w=600&h=400&fit=crop" alt="Glass of Copper IPA" class="beer-image" width="600" height="400" loading="lazy" decoding="async">
+          <div class="beer-info">
+            <h3 class="beer-name">Copper IPA</h3>
+            <p class="beer-style">West Coast IPA</p>
+            <p class="beer-description">Our flagship brew. Citrus-forward with pine notes and a crisp, bitter finish. Brewed with Cascade and Centennial hops.</p>
+            <div class="beer-stats">
+              <span><i class="fas fa-percentage"></i> 6.8% ABV</span>
+              <span><i class="fas fa-fire"></i> 68 IBU</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="beer-card">
+          <img src="https://images.unsplash.com/photo-1612528443702-f6741f70a049?w=600&h=400&fit=crop" alt="Glass of Midnight Stout" class="beer-image" width="600" height="400" loading="lazy" decoding="async">
+          <div class="beer-info">
+            <h3 class="beer-name">Midnight Stout</h3>
+            <p class="beer-style">Imperial Stout</p>
+            <p class="beer-description">Rich and velvety with notes of dark chocolate, espresso, and vanilla. Aged in bourbon barrels for 9 months.</p>
+            <div class="beer-stats">
+              <span><i class="fas fa-percentage"></i> 10.2% ABV</span>
+              <span><i class="fas fa-fire"></i> 45 IBU</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="beer-card">
+          <img src="https://images.unsplash.com/photo-1623310150333-bfed28e64cac?w=600&h=400&fit=crop" alt="Glass of Harvest Wheat" class="beer-image" width="600" height="400" loading="lazy" decoding="async">
+          <div class="beer-info">
+            <h3 class="beer-name">Harvest Wheat</h3>
+            <p class="beer-style">Hefeweizen</p>
+            <p class="beer-description">Light and refreshing wheat beer with banana and clove notes. Perfect for sunny afternoons on our patio.</p>
+            <div class="beer-stats">
+              <span><i class="fas fa-percentage"></i> 5.2% ABV</span>
+              <span><i class="fas fa-fire"></i> 15 IBU</span>
+            </div>
+          </div>
+        </article>
+              </div>
+      </div>
+    </section>
+
+    <section id="menu" class="menu reveal">
+      <div class="section-content">
+        <h2 class="section-title">Kitchen Favorites</h2>
+        <p class="section-subtitle">Farm-to-table dishes crafted to pair with our beers</p>
+      <div class="menu-categories">
+        <div class="menu-category">
+          <h3><i class="fas fa-utensils"></i> Starters</h3>
+          <div class="menu-items">
+            <article class="menu-item">
+              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&h=400&fit=crop" alt="Pretzel Board" class="menu-item-image" width="600" height="400" loading="lazy" decoding="async">
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <div class="menu-item-info">
+                    <h4>Pretzel Board</h4>
+                  </div>
+                  <span class="menu-item-price">$14</span>
+                </div>
+                <p class="menu-item-description">House-made soft pretzels, beer cheese, grain mustard</p>
+              </div>
+            </article>
+            <article class="menu-item">
+              <img src="https://images.unsplash.com/photo-1608039829572-78524f79c4c7?w=600&h=400&fit=crop" alt="Wings" class="menu-item-image" width="600" height="400" loading="lazy" decoding="async">
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <div class="menu-item-info">
+                    <h4>Wings</h4>
+                  </div>
+                  <span class="menu-item-price">$16</span>
+                </div>
+                <p class="menu-item-description">IPA buffalo sauce, blue cheese, celery</p>
+              </div>
+            </article>
+            <article class="menu-item">
+              <img src="https://images.unsplash.com/photo-1618449840665-9ed506d73a34?w=600&h=400&fit=crop" alt="Charcuterie" class="menu-item-image" width="600" height="400" loading="lazy" decoding="async">
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <div class="menu-item-info">
+                    <h4>Charcuterie</h4>
+                  </div>
+                  <span class="menu-item-price">$22</span>
+                </div>
+                <p class="menu-item-description">Local meats, artisan cheeses, seasonal preserves</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h3><i class="fas fa-hamburger"></i> Mains</h3>
+          <div class="menu-items">
+            <article class="menu-item">
+              <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=400&fit=crop" alt="Brewhouse Burger" class="menu-item-image" width="600" height="400" loading="lazy" decoding="async">
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <div class="menu-item-info">
+                    <h4>Brewhouse Burger</h4>
+                  </div>
+                  <span class="menu-item-price">$18</span>
+                </div>
+                <p class="menu-item-description">Grass-fed beef, beer-braised onions, aged cheddar, brioche</p>
+              </div>
+            </article>
+            <article class="menu-item">
+              <img src="https://images.unsplash.com/photo-1580217593608-61931cefc821?w=600&h=400&fit=crop" alt="Fish & Chips" class="menu-item-image" width="600" height="400" loading="lazy" decoding="async">
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <div class="menu-item-info">
+                    <h4>Fish & Chips</h4>
+                  </div>
+                  <span class="menu-item-price">$19</span>
+                </div>
+                <p class="menu-item-description">IPA-battered cod, hand-cut fries, tartar sauce</p>
+              </div>
+            </article>
+            <article class="menu-item">
+              <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&h=400&fit=crop" alt="Short Rib" class="menu-item-image" width="600" height="400" loading="lazy" decoding="async">
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <div class="menu-item-info">
+                    <h4>Short Rib</h4>
+                  </div>
+                  <span class="menu-item-price">$28</span>
+                </div>
+                <p class="menu-item-description">Stout-braised beef, roasted vegetables, mashed potatoes</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit" class="visit reveal">
+      <div class="section-content">
+        <h2 class="section-title">Visit Us</h2>
+        <p class="section-subtitle">We're located in the historic downtown district</p>
+      <div class="visit-info">
+        <div class="info-block">
+          <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+          <p>
+            428 Brewery Lane<br>
+            Downtown District<br>
+            Portland, OR 97214<br>
+            <a href="tel:+15035551234"><i class="fas fa-phone"></i> (503) 555-1234</a>
+          </p>
+        </div>
+        <div class="info-block">
+          <h3><i class="fas fa-clock"></i> Hours</h3>
+          <p>
+            Monday–Thursday: 4pm–11pm<br>
+            Friday: 3pm–Midnight<br>
+            Saturday: 12pm–Midnight<br>
+            Sunday: 12pm–10pm<br>
+            Kitchen closes 1hr before
+          </p>
+        </div>
+        <div class="info-block">
+          <h3><i class="fas fa-envelope"></i> Connect</h3>
+          <p>
+            <a href="mailto:hello@ironwoodbrewing.com">hello@ironwoodbrewing.com</a><br><br>
+            Follow us on social media for daily specials, new releases, and events!
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-logo">Ironwood Brewing Co.</div>
+      <ul class="footer-links">
+        <li><a href="./about.html">Our Story</a></li>
+        <li><a href="./beers.html">Beers</a></li>
+        <li><a href="./kitchen.html">Menu</a></li>
+        <li><a href="./visit.html">Visit</a></li>
+        <li><a href="./events.html">Private Events</a></li>
+        <li><a href="#">Gift Cards</a></li>
+      </ul>
+      <p class="footer-copyright">© 2025 Ironwood Brewing Co. All rights reserved.</p>
+      <p class="footer-credit">Crafted by HC Web Labs</p>
+    </div>
+  </footer>
+
+  <button class="scroll-to-top" aria-label="Scroll to top" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script type="module">
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      
+      // Animate hamburger to X
+      const spans = menuToggle.querySelectorAll('span');
+      if (isOpen) {
+        spans[0].style.transform = 'rotate(45deg) translateY(7px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translateY(-7px)';
+      } else {
+        spans.forEach(span => {
+          span.style.transform = '';
+          span.style.opacity = '';
+        });
+      }
+    });
+
+    // Close mobile menu when link clicked
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        const spans = menuToggle.querySelectorAll('span');
+        spans.forEach(span => {
+          span.style.transform = '';
+          span.style.opacity = '';
+        });
+      });
+    });
+
+    // Scroll Reveal Animation
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Header Hide on Scroll Down, Show on Scroll Up
+    let lastScroll = 0;
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll <= 0) {
+        header.style.transform = 'translateY(0)';
+        return;
+      }
+      
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        // Scrolling down
+        header.style.transform = 'translateY(-100%)';
+      } else {
+        // Scrolling up
+        header.style.transform = 'translateY(0)';
+      }
+      
+      lastScroll = currentScroll;
+    });
+
+    // Smooth scroll with offset for fixed header
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#' || href === '') return;
+        
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (!target) return;
+        
+        const headerHeight = header.offsetHeight;
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Parallax effect on hero video (subtle)
+    const heroVideo = document.querySelector('.hero-video');
+    const hero = document.querySelector('.hero');
+    
+    if (heroVideo && hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const heroHeight = hero.offsetHeight;
+        
+        if (scrolled < heroHeight) {
+          heroVideo.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.5}px))`;
+        }
+      });
+    }
+
+    // View Transitions API (if supported)
+    if ('startViewTransition' in document) {
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          if (href === '#' || href === '') return;
+          
+          const target = document.querySelector(href);
+          if (!target) return;
+          
+          e.preventDefault();
+          
+          document.startViewTransition(() => {
+            const headerHeight = header.offsetHeight;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'instant'
+            });
+          });
+        });
+      });
+    }
+
+    // Lazy load optimization
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            imageObserver.unobserve(img);
+          }
+        });
+      });
+      
+      lazyImages.forEach(img => imageObserver.observe(img));
+    }
+
+    // Performance: Reduce video quality on slow connections
+    if ('connection' in navigator) {
+      const connection = navigator.connection;
+      if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+        const video = document.querySelector('.hero-video');
+        if (video) {
+          video.pause();
+          video.poster = 'https://images.unsplash.com/photo-1566821582776-92b13ab46bb4?w=1920&h=1080&fit=crop';
+        }
+      }
+    }
+
+    // Accessibility: Trap focus in mobile menu when open
+    const focusableElements = 'a[href], button, textarea, input, select';
+    
+    function trapFocus(element) {
+      const focusable = element.querySelectorAll(focusableElements);
+      const firstFocusable = focusable[0];
+      const lastFocusable = focusable[focusable.length - 1];
+
+      element.addEventListener('keydown', function(e) {
+        if (e.key !== 'Tab') return;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocusable) {
+            lastFocusable.focus();
+            e.preventDefault();
+          }
+        } else {
+          if (document.activeElement === lastFocusable) {
+            firstFocusable.focus();
+            e.preventDefault();
+          }
+        }
+      });
+    }
+
+    // Apply focus trap when mobile menu is open
+    menuToggle.addEventListener('click', () => {
+      if (mobileMenu.classList.contains('active')) {
+        trapFocus(mobileMenu);
+        mobileLinks[0]?.focus();
+      }
+    });
+
+    // Close mobile menu on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+        mobileMenu.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.focus();
+        
+        const spans = menuToggle.querySelectorAll('span');
+        spans.forEach(span => {
+          span.style.transform = '';
+          span.style.opacity = '';
+        });
+      }
+    });
+
+    // Scroll to Top Button
+    const scrollToTopBtn = document.querySelector('.scroll-to-top');
+    
+    // Show/hide scroll to top button based on scroll position
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Scroll to top functionality
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Also handle with View Transitions if supported
+    if ('startViewTransition' in document) {
+      scrollToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        document.startViewTransition(() => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'instant'
+          });
+        });
+      });
+    }
+
+    // Console Easter Egg
+    console.log('%c🍺 Ironwood Brewing Co.', 'font-size: 24px; font-weight: bold; color: #B8860B;');
+    console.log('%cCrafted with ❤️ by HC Web Labs', 'font-size: 12px; color: #666;');
+    console.log('%cInterested in a website like this? Let\'s chat!', 'font-size: 12px; color: #999;');
+  </script>
+</body>
+</html>
